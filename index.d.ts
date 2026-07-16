@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,24 +16,29 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var covariance = require( '@stdlib/stats-incr-covariance' );
-var isnan = require( '@stdlib/math-base-assert-is-nan' );
-
-
-// MAIN //
+/**
+* If provided arguments, returns an updated sample covariance; otherwise, returns the current sample covariance.
+*
+* ## Notes
+*
+* -   If provided `NaN`, the input is ignored and the accumulated value remains unchanged.
+*
+* @param x - value
+* @param y - value
+* @returns sample covariance or null
+*/
+type accumulator = ( x?: number, y?: number ) => number | null;
 
 /**
 * Returns an accumulator function which incrementally computes a sample covariance, ignoring `NaN` values.
 *
-* @returns {Function} accumulator function
+* @returns accumulator function
 *
 * @example
-* var nancovariance = require( '@stdlib/stats-incr-nancovariance' );
-*
 * var acc = nancovariance();
 *
 * var cov = acc();
@@ -51,35 +56,9 @@ var isnan = require( '@stdlib/math-base-assert-is-nan' );
 * cov = acc();
 * // returns 4.0
 */
-function nancovariance() {
-	var count = 0;
-	var acc = covariance();
-	return accumulator;
-
-	/**
-	* Updates and returns the sample covariance when provided two numeric arguments.
-	* If no arguments are provided, returns the current sample covariance.
-	*
-	* @private
-	* @param {number} [x] - new x value
-	* @param {number} [y] - new y value
-	* @returns {(number|null)} sample covariance or null
-	*/
-	function accumulator( x, y ) {
-		var val;
-		if ( arguments.length === 0 ) {
-			return ( count < 2 ) ? null : acc();
-		}
-		if ( isnan( x ) || isnan( y ) ) {
-			return ( count < 2 ) ? null : acc();
-		}
-		count += 1;
-		val = acc( x, y );
-		return ( count < 2 ) ? null : val;
-	}
-}
+declare function nancovariance(): accumulator;
 
 
 // EXPORTS //
 
-module.exports = nancovariance;
+export = nancovariance;
