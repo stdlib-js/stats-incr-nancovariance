@@ -35,14 +35,32 @@ limitations under the License.
 
 > Compute a sample covariance incrementally, ignoring `NaN` values.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-incr-nancovariance
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import nancovariance from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-incr-nancovariance@deno/mod.js';
+var incrnancovariance = require( '@stdlib/stats-incr-nancovariance' );
 ```
 
 #### incrnancovariance
@@ -50,7 +68,7 @@ import nancovariance from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-incr-nanc
 Returns an accumulator function which incrementally computes a sample covariance, ignoring any input pairs that contain NaN values. The accumulator returns null until at least two valid data pairs have been provided.
 
 ```javascript
-var accumulator = nancovariance();
+var accumulator = incrnancovariance();
 ```
 
 #### accumulator(`[x, y]`)
@@ -58,7 +76,7 @@ var accumulator = nancovariance();
 If provided a pair of numeric input values `[x, y]`, the accumulator updates and returns the sample covariance. If not provided any input values, the accumulator returns the current sample covariance.
 
 ```javascript
-var accumulator = nancovariance();
+var accumulator = incrnancovariance();
 
 var cov = accumulator();
 // returns null
@@ -87,14 +105,14 @@ cov = accumulator();
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import randu from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@deno/mod.js';
-import nancovariance from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-incr-nancovariance@deno/mod.js';
+var randu = require( '@stdlib/random-base-randu' );
+var incrnancovariance = require( '@stdlib/stats-incr-nancovariance' );
 
 var accumulator;
 var i;
 var x;
 var y;
-accumulator = nancovariance();
+accumulator = incrnancovariance();
 for ( i = 0; i < 100; i++ ) {
     x = ( randu() < 0.2 ) ? NaN : randu() * 100.0;
     y = ( randu() < 0.2 ) ? NaN : randu() * 100.0;
@@ -124,7 +142,7 @@ console.log( accumulator() );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
