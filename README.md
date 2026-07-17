@@ -60,7 +60,7 @@ To view installation and usage instructions specific to each branch build, be su
 ## Usage
 
 ```javascript
-var nancovariance = require( '@stdlib/stats-incr-nancovariance' );
+var incrnancovariance = require( '@stdlib/stats-incr-nancovariance' );
 ```
 
 #### incrnancovariance
@@ -68,7 +68,7 @@ var nancovariance = require( '@stdlib/stats-incr-nancovariance' );
 Returns an accumulator function which incrementally computes a sample covariance, ignoring any input pairs that contain NaN values. The accumulator returns null until at least two valid data pairs have been provided.
 
 ```javascript
-var accumulator = nancovariance();
+var accumulator = incrnancovariance();
 ```
 
 #### accumulator(`[x, y]`)
@@ -76,7 +76,7 @@ var accumulator = nancovariance();
 If provided a pair of numeric input values `[x, y]`, the accumulator updates and returns the sample covariance. If not provided any input values, the accumulator returns the current sample covariance.
 
 ```javascript
-var accumulator = nancovariance();
+var accumulator = incrnancovariance();
 
 var cov = accumulator();
 // returns null
@@ -106,13 +106,13 @@ cov = accumulator();
 
 ```javascript
 var randu = require( '@stdlib/random-base-randu' );
-var nancovariance = require( '@stdlib/stats-incr-nancovariance' );
+var incrnancovariance = require( '@stdlib/stats-incr-nancovariance' );
 
 var accumulator;
 var i;
 var x;
 var y;
-accumulator = nancovariance();
+accumulator = incrnancovariance();
 for ( i = 0; i < 100; i++ ) {
     x = ( randu() < 0.2 ) ? NaN : randu() * 100.0;
     y = ( randu() < 0.2 ) ? NaN : randu() * 100.0;
