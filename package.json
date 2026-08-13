@@ -68,7 +68,11 @@
   ],
   "keywords": [
     "stdlib",
+    "stdmath",
     "statistics",
+    "stats",
+    "mathematics",
+    "math",
     "covariance",
     "incremental",
     "accumulator",
